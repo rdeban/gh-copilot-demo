@@ -19,5 +19,23 @@ export default {
     en: 'Englisch',
     fr: 'Französisch',
     de: 'Deutsch'
+  },
+  cart: {
+    title: 'Warenkorb',
+    empty: 'Ihr Warenkorb ist leer',
+    openCart: 'Warenkorb öffnen',
+    close: 'Warenkorb schließen',
+    subtotal: 'Zwischensumme',
+    tax: 'Steuer (10%)',
+    total: 'Gesamt',
+    itemCount: 'Artikel',
+    clearCart: 'Warenkorb Leeren',
+    confirmClear: 'Möchten Sie Ihren Warenkorb wirklich leeren?',
+    checkout: 'Zur Kasse',
+    checkoutPlaceholder: 'Checkout-Funktion kommt bald!',
+    removeItem: 'Artikel entfernen',
+    increaseQuantity: 'Menge erhöhen',
+    decreaseQuantity: 'Menge verringern',
+    itemAdded: 'Artikel zum Warenkorb hinzugefügt!'
   }
 }

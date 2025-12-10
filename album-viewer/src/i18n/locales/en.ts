@@ -19,5 +19,23 @@ export default {
     en: 'English',
     fr: 'French',
     de: 'German'
+  },
+  cart: {
+    title: 'Shopping Cart',
+    empty: 'Your cart is empty',
+    openCart: 'Open shopping cart',
+    close: 'Close cart',
+    subtotal: 'Subtotal',
+    tax: 'Tax (10%)',
+    total: 'Total',
+    itemCount: 'Items',
+    clearCart: 'Clear Cart',
+    confirmClear: 'Are you sure you want to clear your cart?',
+    checkout: 'Checkout',
+    checkoutPlaceholder: 'Checkout feature coming soon!',
+    removeItem: 'Remove item',
+    increaseQuantity: 'Increase quantity',
+    decreaseQuantity: 'Decrease quantity',
+    itemAdded: 'Item added to cart!'
   }
 }

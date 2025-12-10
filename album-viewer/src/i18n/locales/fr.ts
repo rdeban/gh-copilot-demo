@@ -19,5 +19,23 @@ export default {
     en: 'Anglais',
     fr: 'Français',
     de: 'Allemand'
+  },
+  cart: {
+    title: 'Panier',
+    empty: 'Votre panier est vide',
+    openCart: 'Ouvrir le panier',
+    close: 'Fermer le panier',
+    subtotal: 'Sous-total',
+    tax: 'Taxe (10%)',
+    total: 'Total',
+    itemCount: 'Articles',
+    clearCart: 'Vider le Panier',
+    confirmClear: 'Êtes-vous sûr de vouloir vider votre panier?',
+    checkout: 'Passer la Commande',
+    checkoutPlaceholder: 'Fonctionnalité de paiement bientôt disponible!',
+    removeItem: 'Retirer l\'article',
+    increaseQuantity: 'Augmenter la quantité',
+    decreaseQuantity: 'Diminuer la quantité',
+    itemAdded: 'Article ajouté au panier!'
   }
 }
