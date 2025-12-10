@@ -6,13 +6,16 @@
           <h1>{{ t.header.title }}</h1>
           <p>{{ t.header.subtitle }}</p>
         </div>
-        <div class="language-selector">
-          <label for="language">{{ t.language.select }}:</label>
-          <select id="language" v-model="currentLocale" @change="handleLanguageChange">
-            <option value="en">{{ t.language.en }}</option>
-            <option value="fr">{{ t.language.fr }}</option>
-            <option value="de">{{ t.language.de }}</option>
-          </select>
+        <div class="header-controls">
+          <div class="language-selector">
+            <label for="language">{{ t.language.select }}:</label>
+            <select id="language" v-model="currentLocale" @change="handleLanguageChange">
+              <option value="en">{{ t.language.en }}</option>
+              <option value="fr">{{ t.language.fr }}</option>
+              <option value="de">{{ t.language.de }}</option>
+            </select>
+          </div>
+          <CartIcon />
         </div>
       </div>
     </header>
@@ -36,6 +39,8 @@
         />
       </div>
     </main>
+
+    <CartDrawer />
   </div>
 </template>
 
@@ -43,6 +48,8 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import AlbumCard from './components/AlbumCard.vue'
+import CartIcon from './components/CartIcon.vue'
+import CartDrawer from './components/CartDrawer.vue'
 import type { Album } from './types/album'
 import { useI18n, type Locale } from './i18n'
 
@@ -95,6 +102,12 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 

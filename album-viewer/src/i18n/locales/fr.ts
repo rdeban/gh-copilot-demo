@@ -19,5 +19,22 @@ export default {
     en: 'Anglais',
     fr: 'Français',
     de: 'Allemand'
+  },
+  cart: {
+    title: 'Panier',
+    empty: 'Votre panier est vide',
+    emptyDescription: 'Ajoutez des albums pour commencer!',
+    itemCount: 'article',
+    itemCountPlural: 'articles',
+    subtotal: 'Sous-total',
+    tax: 'Taxe',
+    total: 'Total',
+    clearCart: 'Vider le Panier',
+    checkout: 'Passer la Commande',
+    close: 'Fermer',
+    remove: 'Retirer',
+    quantity: 'Quantité',
+    addedToCart: 'Ajouté au panier!',
+    confirmClear: 'Êtes-vous sûr de vouloir vider votre panier?'
   }
 }

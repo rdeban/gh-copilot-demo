@@ -21,27 +21,46 @@
     </div>
     
     <div class="album-actions">
-      <button class="btn btn-primary">{{ t.album.addToCart }}</button>
+      <button 
+        class="btn btn-primary" 
+        @click="handleAddToCart"
+        :class="{ 'btn-added': showAddedFeedback }"
+      >
+        {{ showAddedFeedback ? '✓ ' + t.cart.addedToCart : t.album.addToCart }}
+      </button>
       <button class="btn btn-secondary">{{ t.album.preview }}</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Album } from '../types/album'
 import { useI18n } from '../i18n'
+import { useCart } from '../composables/useCart'
 
 const { t } = useI18n()
+const { addToCart } = useCart()
 
 interface Props {
   album: Album
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const showAddedFeedback = ref(false)
 
 const handleImageError = (event: Event): void => {
   const target = event.target as HTMLImageElement
   target.src = 'https://via.placeholder.com/300x300/667eea/white?text=Album+Cover'
+}
+
+const handleAddToCart = () => {
+  addToCart(props.album)
+  showAddedFeedback.value = true
+  setTimeout(() => {
+    showAddedFeedback.value = false
+  }, 1500)
 }
 </script>
 
@@ -168,6 +187,23 @@ const handleImageError = (event: Event): void => {
 .btn-primary:hover {
   background: #5a6fd8;
   transform: translateY(-2px);
+}
+
+.btn-added {
+  background: #2ecc71 !important;
+  animation: button-success 0.3s ease;
+}
+
+@keyframes button-success {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .btn-secondary {
