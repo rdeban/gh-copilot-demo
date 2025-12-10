@@ -144,11 +144,15 @@ test.describe('Shopping Cart Feature', () => {
     await page.locator('.cart-icon-button').click();
     await page.waitForTimeout(500);
 
-    // Click clear cart button and confirm
-    page.on('dialog', dialog => dialog.accept());
+    // Setup dialog handler before clicking
+    page.once('dialog', async dialog => {
+      await dialog.accept();
+    });
+
+    // Click clear cart button
     const clearBtn = page.locator('.btn-clear');
     await clearBtn.click();
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
 
     // Cart should be empty
     const emptyMessage = page.locator('.empty-title');

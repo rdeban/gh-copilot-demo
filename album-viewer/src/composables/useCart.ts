@@ -71,8 +71,12 @@ export function useCart() {
   }
   
   const updateQuantity = (albumId: number, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(albumId)
+      return
+    }
     const item = items.value.find(item => item.album.id === albumId)
-    if (item && quantity > 0) {
+    if (item) {
       item.quantity = quantity
     }
   }
