@@ -1,0 +1,23 @@
+export default {
+  header: {
+    title: '🎵 Album Collection',
+    subtitle: 'Discover amazing music albums'
+  },
+  loading: {
+    message: 'Loading albums...'
+  },
+  error: {
+    message: 'Failed to load albums. Please make sure the API is running.',
+    retry: 'Try Again'
+  },
+  album: {
+    addToCart: 'Add to Cart',
+    preview: 'Preview'
+  },
+  language: {
+    select: 'Language',
+    en: 'English',
+    fr: 'French',
+    de: 'German'
+  }
+}

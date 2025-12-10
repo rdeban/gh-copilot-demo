@@ -1,19 +1,31 @@
 <template>
   <div class="app">
     <header class="header">
-      <h1>🎵 Album Collection</h1>
-      <p>Discover amazing music albums</p>
+      <div class="header-content">
+        <div>
+          <h1>{{ t.header.title }}</h1>
+          <p>{{ t.header.subtitle }}</p>
+        </div>
+        <div class="language-selector">
+          <label for="language">{{ t.language.select }}:</label>
+          <select id="language" v-model="currentLocale" @change="handleLanguageChange">
+            <option value="en">{{ t.language.en }}</option>
+            <option value="fr">{{ t.language.fr }}</option>
+            <option value="de">{{ t.language.de }}</option>
+          </select>
+        </div>
+      </div>
     </header>
 
     <main class="main">
       <div v-if="loading" class="loading">
         <div class="spinner"></div>
-        <p>Loading albums...</p>
+        <p>{{ t.loading.message }}</p>
       </div>
 
       <div v-else-if="error" class="error">
-        <p>{{ error }}</p>
-        <button @click="fetchAlbums" class="retry-btn">Try Again</button>
+        <p>{{ t.error.message }}</p>
+        <button @click="fetchAlbums" class="retry-btn">{{ t.error.retry }}</button>
       </div>
 
       <div v-else class="albums-grid">
@@ -32,10 +44,18 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import AlbumCard from './components/AlbumCard.vue'
 import type { Album } from './types/album'
+import { useI18n, type Locale } from './i18n'
+
+const { t, locale, setLocale } = useI18n()
+const currentLocale = ref<Locale>(locale.value)
 
 const albums = ref<Album[]>([])
 const loading = ref<boolean>(true)
 const error = ref<string | null>(null)
+
+const handleLanguageChange = () => {
+  setLocale(currentLocale.value)
+}
 
 const fetchAlbums = async (): Promise<void> => {
   try {
@@ -65,6 +85,49 @@ onMounted(() => {
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-selector label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.language-selector select {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.language-selector select:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: white;
+}
+
+.language-selector select option {
+  background: #667eea;
   color: white;
 }
 
@@ -149,6 +212,15 @@ onMounted(() => {
   
   .header h1 {
     font-size: 2rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .language-selector {
+    justify-content: center;
   }
   
   .albums-grid {
